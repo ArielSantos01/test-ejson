@@ -13,14 +13,26 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v4
 
+    - name: Encrypt file
+      uses: Drafteame/ejson-action@main
+      id: encrypt
+      with:
+        action: encrypt
+        file_path: '${{ github.workspace }}/encrypted/test.ejson'
+
+    - name: Encrypted content
+      run: |
+        echo "Encrypted content:"
+        cat '${{ github.workspace }}/encrypted/test.ejson'
+
     - name: Decrypt file
       uses: Drafteame/ejson-action@main
       id: decrypt
       with:
         action: decrypt
-        file_path: ${{ github.workspace }}/dev.ejson
+        file_path: '${{ github.workspace }}/encrypted/test.ejson'
         private_key: ${{ secrets.EJSON_PRIVATE_KEY }}
-        out_file: ${{ github.workspace }}/decrypted/dev.json
+        out_file: ${{ github.workspace }}/decrypted/test.json
 
     - name: Decrypted content
       run: |
@@ -30,5 +42,5 @@ jobs:
         echo
 
         echo "Stored File:"
-        cat '${{ github.workspace }}/decrypted/dev.json'
+        cat '${{ github.workspace }}/decrypted/test.ejson'
         echo "End of File"
