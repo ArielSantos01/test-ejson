@@ -19,7 +19,7 @@ jobs:
       with:
         action: encrypt
         file_path: '${{ github.workspace }}/encrypted/test.ejson'
-        ejson_version: '1.4.0'
+        ejson_version: '1.5.2'
 
     - name: Encrypted content
       run: |
