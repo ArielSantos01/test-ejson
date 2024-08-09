@@ -19,7 +19,7 @@ jobs:
       with:
         action: encrypt
         file_path: '${{ github.workspace }}/encrypted/test.ejson'
-        ejson_version: '1.4.1'
+        ejson_version: '1.4.0'
 
     - name: Encrypted content
       run: |
@@ -34,7 +34,6 @@ jobs:
         file_path: '${{ github.workspace }}/encrypted/test.ejson'
         private_key: ${{ secrets.EJSON_PRIVATE_KEY }}
         out_file: ${{ github.workspace }}/decrypted/test.json
-        ejson_version: '1.4.1'
 
     - name: Decrypted content
       run: |
