@@ -14,12 +14,12 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Encrypt file
-      uses: Drafteame/ejson-action@feat/ejson-version
+      uses: Drafteame/ejson-action@main
       id: encrypt
       with:
         action: encrypt
         file_path: '${{ github.workspace }}/encrypted/test.ejson'
-        ejson_version: 'lates'
+        ejson_version: '1.4.1'
 
     - name: Encrypted content
       run: |
@@ -27,7 +27,7 @@ jobs:
         cat '${{ github.workspace }}/encrypted/test.ejson'
 
     - name: Decrypt file
-      uses: Drafteame/ejson-action@feat/ejson-version
+      uses: Drafteame/ejson-action@main
       id: decrypt
       with:
         action: decrypt
